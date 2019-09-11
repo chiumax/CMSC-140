@@ -33,7 +33,6 @@ int main()
     const string programmerName = "Max Chiu", dueDate = "1/1/1";
     const int assignNum = 5;
 
-    // Your code goes here
     do
     {
         repeat = false;
@@ -46,7 +45,7 @@ int main()
         {
             cout << "This is not a Lo Shu magic square";
         }
-        cout << "Do you want to try again?";
+        cout << "\n\n\nDo you want to try again? ";
         cin >> userInput;
         if (userInput == "y")
         {
@@ -54,7 +53,7 @@ int main()
         }
     } while (repeat);
 
-    cout << "Name: " << programmerName << endl
+    cout << "\n\nName: " << programmerName << endl
          << "Project #: " << assignNum << endl
          << "Due Date: " << dueDate;
     return 0;
