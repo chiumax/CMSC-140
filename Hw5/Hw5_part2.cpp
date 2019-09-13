@@ -14,6 +14,7 @@ Address:             User's Street Address
 */
 
 #include <iostream>
+#include <string>
 #include <fstream>
 
 using namespace std;

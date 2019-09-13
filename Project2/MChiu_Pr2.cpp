@@ -15,27 +15,33 @@
 	(need to match flow chart submitted in documentation)
   1. Init
      - consts
-          * Time unit lengths (months, days, hours, dog years, gold fish years, etc.)
           * Credits (Programmer name, project number, due date)
      - variables
-          * robot name
-          * user inputs (visitor name, age, 2 numbers)
+          * user country
+          * user inputs (menu choice, conversion value)
   2. Introduction
-     - Welcome message, asks for name
-     - User inputs name
-  3. Game 1
-     - Asks for a number
+     - Ask for a country name
+     - User inputs country
+     - Display conversion toolkit menu
+     - User inputs selection and program checks if in bounds.
+  3. Temperature Conversion
+     - Asks for a number in Celsius
      - User inputs a number
-     - Outputs the different units of time that number in years can represent
-  4. Game 2
-     - Asks for two whole numbers in total (one at a time)
-     - User inputs one for each prompt
-     - Outputs int addition, division, but highlights the difference between int and float/double division
+     - Outputs user input converted to Fahrenheit - Whole Number output ex. 84
+  4. Distance Conversion
+     - Asks for a number in Kilometer
+     - User inputs a number
+     - Outputs user input converted to Mile - Two decimal output ex. 84.56
+  5. Weight Conversion
+     - Asks for a number in Kilogram
+     - User inputs a number
+     - Outputs user input converted to Pound - One decimal output ex. 84.5
   5. Outro
      - Programmer name, assignment #, due date
 */
 
 #include <iostream>
+#include <string>
 #include <iomanip>
 
 using namespace std;

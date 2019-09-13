@@ -14,6 +14,7 @@ The average score is the average of all grading items.
 */
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 

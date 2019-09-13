@@ -8,6 +8,7 @@ Use loops to display star patterns
 */
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 

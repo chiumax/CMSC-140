@@ -1,4 +1,44 @@
+/*
+ * Class: CMSC140 CRN 24381
+ * Instructor: Dr. Kuijt
+ * Project 5
+ * Description: Lo Shu Magic Square validator. User enters inputs for a potential Lo Shu Magic Square and outputs whether it is or not.
+ * Due Date:
+ * I pledge that I have completed the programming assignment independently.
+   I have not copied the code from a student or any source.
+   I have not given my code to any student.
+   Print your Name here: Max Chiu
+ 
+
+ * Pseudocode or Algorithm for the program:
+	(be sure to indent items with control structure)
+	(need to match flow chart submitted in documentation)
+  1. Init
+     - consts
+          * Square Specifications (rows, cols, min cell val, max cell val.)
+          * Credits (Programmer name, project number, due date)
+     - variables
+          * magicArray (hold square input values)
+          * user inputs (cell values, try again)
+  2. Square Input
+     - The square is 3x3. For every cell, ask for a value.
+     - User inputs value that is min(1) < x < max(9)
+  3. Square validation
+     - Check if all numbers are in range
+     - Check if all numbers are unique (no repetition)
+     - Check if every row, column, and diagonal have the same sum
+  4. Output
+     - Prints out the user-inputted Lo Shu Square
+     - Prints out whether the square is a Lo Shu Square
+     - Asks user if they want to try again
+            * Any input that is not 'y' will be considered as no
+            * If 'y', return to step 2
+  5. Outro
+     - Programmer name, assignment #, due date
+*/
+
 #include <iostream>
+#include <string>
 using namespace std;
 
 // Global constants

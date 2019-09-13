@@ -1,4 +1,47 @@
+/*
+ * Class: CMSC140 CRN 24381
+ * Instructor: Dr. Kuijt
+ * Project 3
+ * Description: BlueMont hotel chain program that assists in calculating occupancy rate and total hotel income for one night. Along with other small info as well.
+ * Due Date:
+ * I pledge that I have completed the programming assignment independently.
+   I have not copied the code from a student or any source.
+   I have not given my code to any student.
+   Print your Name here: Max Chiu
+ 
+
+ * Pseudocode or Algorithm for the program:
+	(be sure to indent items with control structure)
+	(need to match flow chart submitted in documentation)
+  1. Init
+     - consts
+          * Hotel Rate Information (Pricing of each type of room)
+          * Credits (Programmer name, project number, due date)
+     - variables
+          * Building information (floors, rooms, occupied rooms, total cost, unoccupied rooms)
+          * user inputs (Number of floors, rooms, occupied rooms)
+  2. Introduction
+     - Welcome banner
+     - Ask for location of hotel chain
+     - User inputs location
+  3. Building Information
+     - Asks for number of floors
+          * User inputs a number between 1 and 5
+     - For each floor, ask for the number of rooms
+          * User inputs numbers between 1 and 30
+     - For each floor, ask for the type of rooms that are occupied
+          * User inputs numbers between 0 and the # of rooms on the current floor
+  4. Output statistics/details
+     - Prints a banner with information about the hotel located at a user specified location (room rate in US$/night)
+     - Prints statistics regarding the night (income, # of rooms, occupancy rate)
+     - Prints the floor with the least number of rooms
+     - If hotel occupancy < 60% print an encouraging message to improve occupancy rates.
+  5. Outro
+     - Programmer name, assignment #, due date
+*/
+
 #include <iostream>
+#include <string>
 #include <iomanip>
 
 using namespace std;
@@ -100,8 +143,8 @@ int main()
           << setw(20) << singleRate << setw(20) << doubleRate << setw(20) << kingRate << setw(20) << suiteRate << "\n\n"
           << setfill('=') << setw(80) << "\n";
 
-// Total Stats of the night
-     cout << setfill(' ') << setw(30) << "Hotel Income: " << setw(15) << "$"<<fixed << setprecision(2) <<(double) totalCost << endl
+     // Total Stats of the night
+     cout << setfill(' ') << setw(30) << "Hotel Income: " << setw(15) << "$" << fixed << setprecision(2) << (double)totalCost << endl
           << setw(30) << "Total # of rooms: " << setw(15) << totalRooms << endl
           << setw(30) << "Total # Occupied Rooms: " << setw(15) << occupiedRooms << endl
           << setw(30) << "Total # Unoccupied Rooms: " << setw(15) << totalRooms - occupiedRooms << endl

@@ -27,6 +27,7 @@ Subjects in Portrait       Base Price
 */
 
 #include <iostream>
+#include <string>
 #include <iomanip>
 
 using namespace std;

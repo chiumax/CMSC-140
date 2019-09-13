@@ -15,6 +15,7 @@ Print the scores in
 */
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 

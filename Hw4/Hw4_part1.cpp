@@ -23,6 +23,7 @@ Input validation: Make sure the number of units is greater than 0.
 */
 
 #include <iostream>
+#include <string>
 #include <iomanip>
 
 using namespace std;

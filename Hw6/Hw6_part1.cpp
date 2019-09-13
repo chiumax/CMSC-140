@@ -8,6 +8,7 @@ Adding and Subtracting through user input
 */
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 

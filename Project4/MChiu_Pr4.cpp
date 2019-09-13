@@ -1,4 +1,43 @@
+/*
+ * Class: CMSC140 CRN 24381
+ * Instructor: Dr. Kuijt
+ * Project 4
+ * Description: Average number of days a company's employees were absent during the year and counts into a text file
+ * Due Date:
+ * I pledge that I have completed the programming assignment independently.
+   I have not copied the code from a student or any source.
+   I have not given my code to any student.
+   Print your Name here: Max Chiu
+ 
+
+ * Pseudocode or Algorithm for the program:
+	(be sure to indent items with control structure)
+	(need to match flow chart submitted in documentation)
+  1. Init
+     - consts
+          * Credits (Programmer name, project number, due date)
+          * ofstream output file
+     - variables
+          * days absent average
+          * user inputs (employee count, days absent count)
+  2. Introduction
+     - Welcome message about program purpose
+     - Write header to text file ("Employee absence report", two columns- each for id and # absent)
+  3. Employee Count
+     - Asks for number of employees
+     - User inputs a number greater than 1
+  4. Days Absent
+     - For every employee in the company, ask for employee ID and absent frequency
+     - User inputs one for each prompt but absence frequency cannot be negative
+     - Everytime the user input is validated it is written to output file
+     - Using user input, write to file the # of employees, # of absent days, and the average.
+  5. Outro
+     - Write to output file programmer name
+     - Programmer name, assignment #, due date
+*/
+
 #include <iostream>
+#include <string>
 #include <iomanip>
 #include <fstream>
 
@@ -14,7 +53,8 @@ int main()
 {
     int employeeCount, daysAbsentCount;
 
-    const string programmerName = "Max Chiu";
+    const string programmerName = "Max Chiu", dueDate = "1/1/1";
+    const int assignNum = 4;
 
     outputFile.open("employeeAbsences.txt");
 
@@ -24,7 +64,10 @@ int main()
 
     employeeCount = NumOfEmployees();
     daysAbsentCount = TotDaysAbsent(employeeCount);
-    cout << "Programmer: " << programmerName;
+    cout << "Thank you for testing my program!!\n"
+         << "PROGRAMMER: " << programmerName << endl
+         << "CMSC140 Common Project " << assignNum << endl
+         << "Due Date: " << dueDate;
 
     outputFile << "The " << employeeCount << " employees were absent a total of " << daysAbsentCount << " days.\n"
                << "The average number of days absent is " << AverageAbsent(employeeCount, daysAbsentCount) << " days.\n";

@@ -15,6 +15,7 @@ While using a single `cout` statement
 */
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 

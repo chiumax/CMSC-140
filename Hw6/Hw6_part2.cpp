@@ -8,6 +8,7 @@ Create a soda vending machine with payment + tax.
 */
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 

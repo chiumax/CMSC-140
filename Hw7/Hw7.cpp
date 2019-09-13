@@ -11,6 +11,7 @@ In the main() function create an array named numbers containing
 
 */
 #include <iostream>
+#include <string>
 
 using namespace std;
 
