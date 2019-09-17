@@ -62,10 +62,11 @@ int arraySum(int array[], int size);
 bool checkSingleUnique(int array[], int size, bool uniqueList[]);
 void showSingleArray(int array[], int size);
 bool checkSingleRange(int array[], int size, int min, int max);
+void fillSingleArray(int array[], int size, int rowNum);
 
 int main()
 {
-
+    // Init Vars
     int magicArray[ROWS][COLS];
     string userInput;
     bool repeat = false;
@@ -73,6 +74,7 @@ int main()
     const string programmerName = "Max Chiu", dueDate = "1/1/1";
     const int assignNum = 5;
 
+    // do while loop to allow the user to use the program inf # of times.
     do
     {
         repeat = false;
@@ -98,10 +100,15 @@ int main()
          << "Due Date: " << dueDate;
     return 0;
 }
-// Function definitions go here
+
+//Required functions
 
 bool isMagicSquare(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
 {
+    /*
+    Given rows, return if the following input is a Lo Shu Square
+    */
+
     return checkRange(arrayRow1, arrayRow2, arrayRow3, size, MIN, MAX) &&
            checkUnique(arrayRow1, arrayRow2, arrayRow3, size) &&
            checkRowSum(arrayRow1, arrayRow2, arrayRow3, size) &&
@@ -110,6 +117,10 @@ bool isMagicSquare(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
 }
 bool checkRange(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size, int min, int max)
 {
+    /*
+    Given rows, check if every value is min < x < max
+    */
+
     // check if all values are in range of min, max.
     return checkSingleRange(arrayRow1, size, min, max) &&
            checkSingleRange(arrayRow2, size, min, max) &&
@@ -117,6 +128,10 @@ bool checkRange(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size, int
 }
 bool checkUnique(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
 {
+    /*
+    Given rows, check if all the values in the square are unique from each other
+    */
+
     //a bool list so we know if a # is used or not.
     bool uniqueList[9] = {0};
 
@@ -127,12 +142,20 @@ bool checkUnique(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
 }
 bool checkRowSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 {
+    /*
+    Checks if the sum of each row equals each other
+    */
+
     // row 1 == row 2, row 2 == row 3, therefore row1 == row 3
     return arraySum(arrayrow1, size) == arraySum(arrayrow2, size) &&
            arraySum(arrayrow2, size) == arraySum(arrayrow3, size);
 }
 bool checkColSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 {
+    /*
+    Checks if the sum of each column equals each other
+    */
+
     // array of sums for each column
     int totalSum[size];
 
@@ -148,6 +171,10 @@ bool checkColSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 }
 bool checkDiagSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 {
+    /*
+    Checks if the sum of each of the diagonals equal each other
+    */
+
     // define inputs
     int diagonalOne[3] = {arrayrow1[2], arrayrow2[1], arrayrow3[0]}, diagonalTwo[3] = {arrayrow1[0], arrayrow2[1], arrayrow3[2]};
 
@@ -156,40 +183,45 @@ bool checkDiagSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 
 void fillArray(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
 {
-    int *currentArray;
+    /*
+    Asks user to fill in Lo Shu Square
+    */
+
     for (int i = 0; i < size; i++)
     {
         switch (i)
         {
         case 0:
-            currentArray = arrayRow1;
+            fillSingleArray(arrayRow1, size, i);
             break;
         case 1:
-            currentArray = arrayRow2;
+            fillSingleArray(arrayRow2, size, i);
             break;
         case 2:
-            currentArray = arrayRow3;
+            fillSingleArray(arrayRow3, size, i);
             break;
         default:
             break;
-        }
-        for (int j = 0; j < size; j++)
-        {
-            cout << "Enter the number for row " << i << " and column " << j << " :";
-            cin >> currentArray[j];
         }
     }
 }
 void showArray(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 {
+    /*
+    Shows the Lo Shu Square
+    */
     showSingleArray(arrayrow2, size);
     showSingleArray(arrayrow2, size);
     showSingleArray(arrayrow3, size);
 }
 
+// custom functions
 int arraySum(int array[], int size)
 {
-    // returns sum of array
+    /*
+    returns sum of array
+    */
+
     int sum = 0;
     for (int i = 0; i < size; i++)
     {
@@ -197,11 +229,17 @@ int arraySum(int array[], int size)
     }
     return sum;
 }
+
 bool checkSingleUnique(int array[], int size, bool uniqueList[])
 {
-    // pass in a list, a list of unique values you want to check against
+    /*
+    Pass in an array, and then a list of boolean values whose indexes you want to check against
+    if array has 1, go to 0th index of list and if false, set to true
+    Otherwise, return false (not unique)
+    */
     for (int i = 0; i < size; i++)
     {
+
         if (uniqueList[array[i] - 1])
         {
             cout << "not unique";
@@ -217,7 +255,9 @@ bool checkSingleUnique(int array[], int size, bool uniqueList[])
 }
 void showSingleArray(int array[], int size)
 {
-    // print a single array
+    /*
+    Print all values of an array on a line and endl
+    */
     for (int i = 0; i < size; i++)
     {
         cout << array[i] << " ";
@@ -226,11 +266,26 @@ void showSingleArray(int array[], int size)
 }
 bool checkSingleRange(int array[], int size, int min, int max)
 {
-    // checks the range of an array
+    /*
+    Checks if every value in array is min < x < max
+    */
     for (int i = 0; i < size; i++)
     {
         if (array[i] > max || array[i] < min)
             return false;
     }
     return true;
+}
+
+void fillSingleArray(int array[], int size, int rowNum)
+{
+    /*
+    User fills out every value in array
+    */
+
+    for (int j = 0; j < size; j++)
+    {
+        cout << "Enter the number for row " << rowNum << " and column " << j << " :";
+        cin >> array[j];
+    }
 }

@@ -25,7 +25,7 @@
      - Write header to text file ("Employee absence report", two columns- each for id and # absent)
   3. Employee Count
      - Asks for number of employees
-     - User inputs a number greater than 1
+     - User inputs a number greater than 0
   4. Days Absent
      - For every employee in the company, ask for employee ID and absent frequency
      - User inputs one for each prompt but absence frequency cannot be negative
@@ -43,44 +43,58 @@
 
 using namespace std;
 
+// Global Vars
+ofstream outputFile;
+
+// Function prototypes
 int NumOfEmployees();
 int TotDaysAbsent(int employeeCount);
 double AverageAbsent(int employeeCount, int daysAbsentCount);
 
-ofstream outputFile;
-
 int main()
 {
+    // Init Vars
     int employeeCount, daysAbsentCount;
 
     const string programmerName = "Max Chiu", dueDate = "1/1/1";
     const int assignNum = 4;
 
+    // Open file, create one if doesn't exist
     outputFile.open("employeeAbsences.txt");
 
+    // Write headers to the file
     outputFile << "EMPLOYEE ABSENCE REPORT\nemployee id   days absent\n";
 
     cout << "Calculate the average number of days a company's employees are absent.\n";
 
     employeeCount = NumOfEmployees();
     daysAbsentCount = TotDaysAbsent(employeeCount);
-    cout << "Thank you for testing my program!!\n"
-         << "PROGRAMMER: " << programmerName << endl
-         << "CMSC140 Common Project " << assignNum << endl
-         << "Due Date: " << dueDate;
 
+    // Write summary to end of file
     outputFile << "The " << employeeCount << " employees were absent a total of " << daysAbsentCount << " days.\n"
                << "The average number of days absent is " << AverageAbsent(employeeCount, daysAbsentCount) << " days.\n";
 
     outputFile << "Programmer: " << programmerName;
 
     outputFile.close();
+
+    // Outro
+    cout << "Thank you for testing my program!!\n"
+         << "PROGRAMMER: " << programmerName << endl
+         << "CMSC140 Common Project " << assignNum << endl
+         << "Due Date: " << dueDate;
 }
 
 int NumOfEmployees()
 {
+    /* 
+    Queries for number of employees in the company
+    */
+
+    // init vars
     int userInput;
     bool validate = true;
+
     do
     {
         if (validate)
@@ -93,18 +107,30 @@ int NumOfEmployees()
         }
 
         cin >> userInput;
+
         if (userInput < 1)
         {
             validate = false;
             cout << "The number of employees must not be negative.";
             continue;
         }
+
         validate = true;
+
     } while (!validate);
+
     return userInput;
 }
+
 int TotDaysAbsent(int employeeCount)
 {
+    /*
+    For each employee, queries for ID and days absent
+    Writes to file gathered information
+    Returns total days absent
+    */
+
+    // Init Vars
     int userInput, total = 0;
     bool validate = true;
     for (int i = 0; i < employeeCount; i++)
@@ -115,6 +141,8 @@ int TotDaysAbsent(int employeeCount)
             {
                 cout << "Please enter the an employee ID: ";
                 cin >> userInput;
+
+                // Write to file the employee ID
                 outputFile << setw(8) << userInput;
                 cout << "Please enter the number of days this employee was absent: ";
             }
@@ -130,7 +158,10 @@ int TotDaysAbsent(int employeeCount)
                 cout << "The number of days must not be negative.";
                 continue;
             }
+
             total += userInput;
+
+            // Write to file the # of days absent on the same row as the corresponding ID
             outputFile << setw(10) << userInput << endl;
             validate = true;
         } while (!validate);
@@ -139,6 +170,10 @@ int TotDaysAbsent(int employeeCount)
 }
 double AverageAbsent(int employeeCount, int daysAbsentCount)
 {
+    /*
+    Calculates average absence per employee
+    */
+
     // cast to double to ensure decimal accuracy.
     return (double)daysAbsentCount / (double)employeeCount;
 }

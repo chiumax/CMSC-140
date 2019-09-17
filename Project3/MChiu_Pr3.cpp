@@ -49,12 +49,13 @@ using namespace std;
 int main()
 {
      // Init Variables
-     int totalCost = 0, totalFloors = 0, totalRooms = 0, occupiedRooms = 0, tempUserInput, floorRooms;
-     // Parallel Lists
+     int totalCost = 0, totalFloors = 0, totalRooms = 0, occupiedRooms = 0, tempUserInput;
+     // Rooms by floor. Used to get floor with least # of rooms
      int roomsByFloor[5];
      bool validated = false;
      string location;
 
+     // Room Rates
      const int singleRate = 60, doubleRate = 75, kingRate = 100, suiteRate = 150, rates[4] = {singleRate, doubleRate, kingRate, suiteRate};
      const string roomName[4] = {"SINGLE rooms", "DOUBLE rooms", "KING rooms", "SUITES"};
 
@@ -88,20 +89,22 @@ int main()
           do
           {
                // temp variables for floor by floor input validation
-               int tempTotalRooms = 0, tempTotalCost = 0;
+               int tempTotalRooms = 0, tempTotalCost = 0, tempFloorRooms;
                validated = true;
 
                cout << "\nEnter total number of rooms in the " << i << "th Floor: ";
-               cin >> floorRooms;
+               cin >> tempFloorRooms;
 
-               if (!(floorRooms >= 1 && floorRooms <= 30))
+               if (!(tempFloorRooms >= 1 && tempFloorRooms <= 30))
                {
                     cout << "Number of rooms should be between 1 and 30 !! Please try again.\n";
                     validated = false;
                     continue;
                }
+
                // appending # rooms to array for later when checking which floor has the least # of rooms
-               roomsByFloor[i - 1] = floorRooms;
+               roomsByFloor[i - 1] = tempFloorRooms;
+
                // Asks for # rooms occupied for each type on floor i. 1 <= total <= total # of rooms on current floor
                for (int j = 0; j < 4; j++)
                {
@@ -113,11 +116,12 @@ int main()
                          validated = false;
                          break;
                     }
+
                     tempTotalRooms += tempUserInput;
                     tempTotalCost += tempUserInput * rates[j];
                }
 
-               if (tempTotalRooms > floorRooms)
+               if (tempTotalRooms > tempFloorRooms && validated)
                {
                     cout << "Total number of occupied rooms exceeds the total number of rooms on this floor. Please try again!!\n";
                     validated = false;
@@ -125,8 +129,9 @@ int main()
                }
                if (validated)
                {
+                    // once validated, these sums can be added
                     totalCost += tempTotalCost;
-                    totalRooms += floorRooms;
+                    totalRooms += tempFloorRooms;
                     occupiedRooms += tempTotalRooms;
                }
           } while (!validated);
@@ -151,6 +156,7 @@ int main()
           << setw(30) << "Occupancy Rate: " << fixed << setprecision(2) << setw(15) << (((double)occupiedRooms / (double)totalRooms) * 100) << "%\n\n";
 
      // Looping through all the rooms to get the floor with the least number of rooms.
+     // Starts at 1 because the array[0] item in an array is the first item in it.
      int min = roomsByFloor[0], minIndex = 1;
      for (int i = 1; i < totalFloors; i++)
      {
@@ -163,8 +169,7 @@ int main()
      cout << minIndex << "th Floor with " << min << " rooms, has the least number of rooms\n";
      // Check if occupancy rate is below 60 percent
      if ((((double)occupiedRooms / (double)totalRooms) * 100) < 60)
-          cout
-              << "Need to improve Hotel occupancy rate!!\n\n";
+          cout << "Need to improve Hotel occupancy rate!!\n\n";
 
      // Outro
      cout << "Thank you for testing my program!!\n"

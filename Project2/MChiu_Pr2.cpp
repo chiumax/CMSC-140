@@ -37,6 +37,7 @@
      - User inputs a number
      - Outputs user input converted to Pound - One decimal output ex. 84.5
   5. Outro
+     - X country sounds fun!
      - Programmer name, assignment #, due date
 */
 
@@ -92,6 +93,7 @@ int main()
         return 0;
         break;
     default:
+        // Would have made case 4 default but wouldn't have been specific enough
         cout << "Invalid choice (1-4 only), exiting...";
         return 0;
         break;
