@@ -58,7 +58,7 @@ int main()
     int userChoice;
     string userCountry;
 
-    const string programmerName = "Max Chiu", dueDate = "1/1/1";
+    const string programmerName = "Max Chiu", dueDate = "10/21/2019";
     const int assignNum = 2;
 
     // Begin

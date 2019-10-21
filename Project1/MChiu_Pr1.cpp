@@ -16,6 +16,9 @@
   1. Init
      - consts
           * Time unit lengths (months, days, hours, dog years, gold fish years, etc.)
+          * Dog age must be 7x human age
+          * Goldfish age must be 5x human age
+          * 1 month must be 30 days
           * Credits (Programmer name, project number, due date)
      - variables
           * robot name
@@ -26,11 +29,22 @@
   3. Game 1
      - Asks for a number
      - User inputs a number
-     - Outputs the different units of time that number in years can represent
+     - Outputs the different units of time that number in years can represent (input*const)
+          * Years
+          * Months (y*12)
+          * Days (y*12*30)
+          * Hours (y*12*30*24)
+          * Minutes (y*12*30*24*60)
+          * Seconds (y*12*30*24*60*60)
+          * Dog years (y*7)
+          * Goldfish years (y*5)
   4. Game 2
      - Asks for two whole numbers in total (one at a time)
      - User inputs one for each prompt
-     - Outputs int addition, division, but highlights the difference between int and float/double division
+     - Outputs 
+          * int addition 
+          * int division
+          * but highlights the difference between int and float/double division with setprecision for one decimal point
   5. Outro
      - Programmer name, assignment #, due date
 */
@@ -48,7 +62,7 @@ int main()
      int age;
      double wholeNumOne, wholeNumTwo;
 
-     const string programmerName = "Max Chiu", dueDate = "1/1/1";
+     const string programmerName = "Max Chiu", dueDate = "10/7/2019";
      const int assignNum = 1;
 
      // year to months, seconds, etc.
@@ -86,7 +100,7 @@ int main()
      cout << "Using the operator '+' in C++, the result of " << wholeNumOne << " + " << wholeNumTwo << " is " << wholeNumOne + wholeNumTwo << ".\n";
      // Either cout or setprecision does rounding. Cast int during division to prevent # > 0.5 to round.
      cout << "Using the operator '/', the result of " << wholeNumOne << " / " << wholeNumTwo << " is " << (int)(wholeNumOne / wholeNumTwo) << ".\n";
-     cout << fixed << setprecision(1) << "However, the result of " << wholeNumOne << " / " << wholeNumTwo << " is about " << wholeNumOne / wholeNumTwo << ".\n";
+     cout << setprecision(1) << fixed << "However, the result of " << wholeNumOne << " / " << wholeNumTwo << " is about " << ((int)((wholeNumOne / wholeNumTwo) * 10)) / 10.0 << ".\n";
 
      //// Outro
      cout << "\nThank you for testing my program!!" << endl

@@ -68,7 +68,7 @@ int main()
 {
     // Init Vars
     int magicArray[ROWS][COLS];
-    string userInput;
+    char userInput;
     bool repeat = false;
 
     const string programmerName = "Max Chiu", dueDate = "1/1/1";
@@ -89,7 +89,7 @@ int main()
         }
         cout << "\n\n\nDo you want to try again? ";
         cin >> userInput;
-        if (userInput == "y")
+        if (userInput == 'y' || userInput == 'Y')
         {
             repeat = true;
         }
