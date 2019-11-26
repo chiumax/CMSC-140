@@ -29,7 +29,7 @@
   4. Days Absent
      - For every employee in the company, ask for employee ID and absent frequency
      - User inputs one for each prompt but absence frequency cannot be negative
-     - Everytime the user input is validated it is written to output file
+     - Everytime the user input is validated (criteria listed above) it is written to output file
      - Using user input, write to file the # of employees, # of absent days, and the average.
   5. Outro
      - Write to output file programmer name
@@ -54,9 +54,10 @@ double AverageAbsent(int employeeCount, int daysAbsentCount);
 int main()
 {
     // Init Vars
-    int employeeCount, daysAbsentCount;
+    int employeeCount;
+    double daysAbsentCount;
 
-    const string programmerName = "Max Chiu", dueDate = "1/1/1";
+    const string programmerName = "Max Chiu", dueDate = "25/11/19";
     const int assignNum = 4;
 
     // Open file, create one if doesn't exist
@@ -111,7 +112,7 @@ int NumOfEmployees()
         if (userInput < 1)
         {
             validate = false;
-            cout << "The number of employees must not be negative.";
+            cout << "The number of employees must not be negative or zero. ";
             continue;
         }
 
@@ -149,13 +150,13 @@ int TotDaysAbsent(int employeeCount)
             else
             {
 
-                cout << "Please re-enter the number of days absent";
+                cout << "Please re-enter the number of days absent: ";
             }
             cin >> userInput;
             if (userInput < 0)
             {
                 validate = false;
-                cout << "The number of days must not be negative.";
+                cout << "The number of days must not be negative or zero. ";
                 continue;
             }
 

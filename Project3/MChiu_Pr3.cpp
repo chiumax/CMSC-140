@@ -31,6 +31,7 @@
           * User inputs numbers between 1 and 30
      - For each floor, ask for the type of rooms that are occupied
           * User inputs numbers between 0 and the # of rooms on the current floor
+          * Total of rooms occupied must not exceed the # of rooms on floor
   4. Output statistics/details
      - Prints a banner with information about the hotel located at a user specified location (room rate in US$/night)
      - Prints statistics regarding the night (income, # of rooms, occupancy rate)
@@ -59,7 +60,7 @@ int main()
      const int singleRate = 60, doubleRate = 75, kingRate = 100, suiteRate = 150, rates[4] = {singleRate, doubleRate, kingRate, suiteRate};
      const string roomName[4] = {"SINGLE rooms", "DOUBLE rooms", "KING rooms", "SUITES"};
 
-     const string programmerName = "Max Chiu", dueDate = "1/1/1";
+     const string programmerName = "Max Chiu", dueDate = "11/11/19";
      const int assignNum = 3;
 
      // Begin
