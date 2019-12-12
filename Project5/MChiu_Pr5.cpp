@@ -79,6 +79,7 @@ int main()
     {
         repeat = false;
         fillArray(magicArray[0], magicArray[1], magicArray[2], ROWS);
+        showArray(magicArray[0], magicArray[1], magicArray[2], ROWS);
         if (isMagicSquare(magicArray[0], magicArray[1], magicArray[2], ROWS))
         {
             cout << "This is a Lo Shu magic square";
@@ -115,6 +116,7 @@ bool isMagicSquare(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
            checkColSum(arrayRow1, arrayRow2, arrayRow3, size) &&
            checkDiagSum(arrayRow1, arrayRow2, arrayRow3, size);
 }
+
 bool checkRange(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size, int min, int max)
 {
     /*
@@ -140,6 +142,26 @@ bool checkUnique(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
            checkSingleUnique(arrayRow2, size, uniqueList) &&
            checkSingleUnique(arrayRow3, size, uniqueList);
 }
+
+void fillArray(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
+{
+    /*
+    Asks user to fill in Lo Shu Square
+    */
+    fillSingleArray(arrayRow1, size, 1);
+    fillSingleArray(arrayRow2, size, 2);
+    fillSingleArray(arrayRow3, size, 3);
+}
+void showArray(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
+{
+    /*
+    Shows the Lo Shu Square
+    */
+    showSingleArray(arrayrow1, size);
+    showSingleArray(arrayrow2, size);
+    showSingleArray(arrayrow3, size);
+}
+
 bool checkRowSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 {
     /*
@@ -179,40 +201,6 @@ bool checkDiagSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
     int diagonalOne[3] = {arrayrow1[2], arrayrow2[1], arrayrow3[0]}, diagonalTwo[3] = {arrayrow1[0], arrayrow2[1], arrayrow3[2]};
 
     return arraySum(diagonalOne, size) == arraySum(diagonalTwo, size);
-}
-
-void fillArray(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
-{
-    /*
-    Asks user to fill in Lo Shu Square
-    */
-
-    for (int i = 0; i < size; i++)
-    {
-        switch (i)
-        {
-        case 0:
-            fillSingleArray(arrayRow1, size, i);
-            break;
-        case 1:
-            fillSingleArray(arrayRow2, size, i);
-            break;
-        case 2:
-            fillSingleArray(arrayRow3, size, i);
-            break;
-        default:
-            break;
-        }
-    }
-}
-void showArray(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
-{
-    /*
-    Shows the Lo Shu Square
-    */
-    showSingleArray(arrayrow2, size);
-    showSingleArray(arrayrow2, size);
-    showSingleArray(arrayrow3, size);
 }
 
 // custom functions
@@ -285,7 +273,7 @@ void fillSingleArray(int array[], int size, int rowNum)
 
     for (int j = 0; j < size; j++)
     {
-        cout << "Enter the number for row " << rowNum << " and column " << j << " :";
+        cout << "Enter the number for row " << rowNum << " and column " << j + 1 << " :";
         cin >> array[j];
     }
 }
