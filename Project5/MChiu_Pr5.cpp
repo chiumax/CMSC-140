@@ -71,7 +71,7 @@ int main()
     char userInput;
     bool repeat = false;
 
-    const string programmerName = "Max Chiu", dueDate = "1/1/1";
+    const string programmerName = "Max Chiu", dueDate = "12/15/19";
     const int assignNum = 5;
 
     // do while loop to allow the user to use the program inf # of times.
